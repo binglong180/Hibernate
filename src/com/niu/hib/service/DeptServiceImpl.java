@@ -1,5 +1,7 @@
 package com.niu.hib.service;
 
+import java.io.Serializable;
+
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
@@ -10,6 +12,8 @@ import com.niu.hib.util.HibernateUtil;
 
 public class DeptServiceImpl implements DeptService {
 	DeptDao dd = null;
+	Transaction tx = null;
+	Session session = null;
 
 	@Override
 	public void addDept(Dept dept) {
@@ -18,6 +22,75 @@ public class DeptServiceImpl implements DeptService {
 		dd = new DeptDaoImpl();
 		try {
 			dd.addDept(dept, session);
+			tx.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			if (tx != null)
+				tx.rollback();
+		}
+
+	}
+
+	@Override
+	public Dept get(Serializable id) {
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		Dept dept = null;
+		dd = new DeptDaoImpl();
+		try {
+			dept = dd.get(id, session);
+			tx.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			if (tx != null)
+				tx.rollback();
+		}
+		return dept;
+	}
+
+	@Override
+	public Dept load(Serializable id) {
+		Session session = HibernateUtil.currentSession();
+		Transaction tx = session.beginTransaction();
+		Dept dept = null;
+		dd = new DeptDaoImpl();
+		try {
+			dept = dd.load(id, session);
+		} catch (Exception e) {
+			System.out.println(e);
+			if (tx != null)
+				tx.rollback();
+		}
+		return dept;
+	}
+
+	@Override
+	public Dept update(Dept dept) {
+
+		dd = new DeptDaoImpl();
+		try {
+			session = HibernateUtil.currentSession();
+			tx = session.beginTransaction();
+			Dept updateDept = dd.load(dept.getDeptno(), session);
+			updateDept.setDname(dept.getDname());
+			updateDept.setLoc(dept.getLoc());
+			tx.commit();
+		} catch (Exception e) {
+			System.out.println(e);
+			if (tx != null)
+				tx.rollback();
+		}
+		return dept;
+	}
+
+	@Override
+	public void delet(Byte id) {
+		dd = new DeptDaoImpl();
+		try {
+			session = HibernateUtil.currentSession();
+			tx = session.beginTransaction();
+			Dept updateDept = dd.load(id, session);
+			dd.delet(updateDept, session);
 			tx.commit();
 		} catch (Exception e) {
 			System.out.println(e);
