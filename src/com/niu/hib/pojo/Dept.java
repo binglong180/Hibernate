@@ -1,6 +1,8 @@
 package com.niu.hib.pojo;
 
-public class Dept {
+import java.io.Serializable;
+
+public class Dept implements Serializable{
 	
 	private Byte deptno;
 	private String dname;
