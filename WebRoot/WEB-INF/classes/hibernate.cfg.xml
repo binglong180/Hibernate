@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd" >
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置数据库信息 -->
+		<property name="connection.url">jdbc:oracle:thin:@127.0.0.1:1521:orcl</property>
+		<property name="connection.username">scott</property>
+		<property name="connection.password">1111</property>
+		<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+		<!-- 平台特性参数 -->
+		<!-- 指定方言 -->
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		<!-- 显示信息 -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<!-- 指定当前session范围和上下文 -->
+		<property name="current_session_context_class">thread</property>
+		<!-- 配置映射文件 -->
+		<mapping resource="com/niu/hib/pojo/Dept.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
