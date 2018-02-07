@@ -22,7 +22,6 @@ public class DeptDaoImpl implements DeptDao {
 	public Dept load(Serializable id, Session session) {
 		return (Dept) session.load(Dept.class, id);
 	}
-
 	@Override
 	public void delet(Dept dept, Session session) {
 		session.delete(dept);

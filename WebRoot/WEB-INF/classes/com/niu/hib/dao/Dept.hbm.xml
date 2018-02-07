@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping>
-	<class name="com.niu.hib.pojo.Dept" table="`DEPT`" >
-	<id name="deptno" column="`DEPTNO`" type="java.lang.Byte">
-		<generator class="assigned"></generator>
-	</id>
-	<property name="dname" column="`DNAME`" type="java.lang.String"></property>
-	<property name="loc" type="java.lang.String">
-		<column name="`LOC`"></column>
-	</property>
+	<class name="com.niu.hib.pojo.Dept" table="`DEPT`"
+		dynamic-update="true">
+		<id name="deptno" column="`DEPTNO`" type="java.lang.Short">
+			<!-- <generator class="assigned"></generator> -->
+			<generator class="increment"></generator>
+		</id>
+		<property name="dname" column="`DNAME`" type="java.lang.String"></property>
+		<property name="loc" type="java.lang.String">
+			<column name="`LOC`"></column>
+		</property>
 	</class>
 </hibernate-mapping>

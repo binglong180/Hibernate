@@ -63,24 +63,22 @@ public class DeptServiceImpl implements DeptService {
 		}
 		return dept;
 	}
-
+	//使用Merge更新数据
 	@Override
 	public Dept update(Dept dept) {
-
+		Dept updateDept=null;
 		dd = new DeptDaoImpl();
 		try {
 			session = HibernateUtil.currentSession();
 			tx = session.beginTransaction();
-			Dept updateDept = dd.load(dept.getDeptno(), session);
-			updateDept.setDname(dept.getDname());
-			updateDept.setLoc(dept.getLoc());
+			updateDept = (Dept) session.merge(dept);
 			tx.commit();
 		} catch (Exception e) {
 			System.out.println(e);
 			if (tx != null)
 				tx.rollback();
 		}
-		return dept;
+		return updateDept;
 	}
 
 	@Override

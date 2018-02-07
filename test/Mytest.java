@@ -37,10 +37,11 @@ public class Mytest {
 	public void test3() {
 		Dept dept = new Dept();
 		dept.setDname("山西");
-		dept.setLoc("岚县");
-		dept.setDeptno(new Byte("80"));
+		dept.setLoc("吕梁");
+		dept.setDeptno(new Short("80"));
 		try {
-			ds.update(dept);
+			Dept update = ds.update(dept);
+			System.out.println(update);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

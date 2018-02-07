@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 public class Dept implements Serializable{
 	
-	private Byte deptno;
+	private Short deptno;
 	private String dname;
 	private String loc;
-	public Byte getDeptno() {
+	
+	public Short getDeptno() {
 		return deptno;
 	}
-	public void setDeptno(Byte deptno) {
+	public void setDeptno(Short deptno) {
 		this.deptno = deptno;
 	}
 	public String getDname() {
