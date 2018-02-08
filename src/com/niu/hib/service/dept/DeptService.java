@@ -1,4 +1,4 @@
-package com.niu.hib.service;
+package com.niu.hib.service.dept;
 
 
 import java.io.Serializable;

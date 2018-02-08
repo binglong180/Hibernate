@@ -22,6 +22,7 @@
 		</property>
 		<property name="current_session_context_class">thread</property>
 		<!-- 映射信息 -->
-		<mapping resource="com/niu/hib/dao/Dept.hbm.xml" />
+		<mapping resource="com/niu/hib/dao/dept/Dept.hbm.xml" />
+		<mapping resource="com/niu/hib/dao/emp/Emp.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

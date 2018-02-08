@@ -1,8 +1,8 @@
 import org.junit.Test;
 
 import com.niu.hib.pojo.Dept;
-import com.niu.hib.service.DeptService;
-import com.niu.hib.service.DeptServiceImpl;
+import com.niu.hib.service.dept.DeptService;
+import com.niu.hib.service.dept.DeptServiceImpl;
 
 public class Mytest {
 	DeptService ds = new DeptServiceImpl();

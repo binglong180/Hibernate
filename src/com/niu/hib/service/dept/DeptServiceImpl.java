@@ -1,12 +1,12 @@
-package com.niu.hib.service;
+package com.niu.hib.service.dept;
 
 import java.io.Serializable;
 
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
 
-import com.niu.hib.dao.DeptDao;
-import com.niu.hib.dao.DeptDaoImpl;
+import com.niu.hib.dao.dept.DeptDao;
+import com.niu.hib.dao.dept.DeptDaoImpl;
 import com.niu.hib.pojo.Dept;
 import com.niu.hib.util.HibernateUtil;
 

@@ -1,4 +1,4 @@
-package com.niu.hib.dao;
+package com.niu.hib.dao.dept;
 
 import java.io.Serializable;
 
