@@ -13,6 +13,36 @@ import com.niu.hib.pojo.EmpCollection;
 public class EmpService {
 	EmpDao ed = null;
 
+	public Long getCount() {
+		ed = new EmpDao();
+		Long count = new Long("0");
+		Transaction tx = ed.currentSession().beginTransaction();
+		try {
+			count = ed.getCount();
+
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			e.printStackTrace();
+		}
+		return count;
+	}
+
+	public List<Emp> getPager(int currentPage, int pageSize) {
+		ed = new EmpDao();
+		List<Emp> pager = null;
+		Transaction tx = ed.currentSession().beginTransaction();
+		try {
+			pager = ed.getPager(currentPage, pageSize);
+
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println(e);
+		}
+		return pager;
+	}
+
 	public List<Emp> getListByCon(Map<String, Object> emp) {
 		List<Emp> empList = null;
 		ed = new EmpDao();

@@ -100,4 +100,25 @@ public class EmpTest {
 			e.printStackTrace();
 		}
 	}
+
+	@Test
+	public void test7() {
+		EmpService es = new EmpService();
+		try {
+			List<Emp> pager = es.getPager(3, 2);
+			System.out.println(pager);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void test8() {
+		EmpService es = new EmpService();
+		try {
+			Long count = es.getCount();
+			System.out.println(count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
