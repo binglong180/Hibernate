@@ -111,12 +111,44 @@ public class EmpTest {
 			e.printStackTrace();
 		}
 	}
+
 	@Test
 	public void test8() {
 		EmpService es = new EmpService();
 		try {
 			Long count = es.getCount();
 			System.out.println(count);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test9() {
+		EmpService es = new EmpService();
+		try {
+			List<Object[]> count = es.getEmpJob_2();
+			for (Object[] objects : count) {
+				for (Object object : objects) {
+					System.out.print(object + "  ");
+				}
+				System.out.println();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test10() {
+		EmpService es = new EmpService();
+		try {
+			List<Emp> count = es.getEmpJob_3();
+			for (Emp emp : count) {
+				System.out.println(emp);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

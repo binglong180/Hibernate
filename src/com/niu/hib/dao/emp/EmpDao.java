@@ -25,7 +25,15 @@ public class EmpDao extends BaseDao {
 	public List<Emp> getEmpList() {
 		return this.currentSession().createQuery("from Emp").list();
 	}
-
+	public List<String> getEmpJob() {
+		return this.currentSession().createQuery("select JOB from Emp").list();
+	}
+	public List<Object[]> getEmpJob_2() {
+		return this.currentSession().createQuery("select ENAME,JOB from Emp").list();
+	}
+	public List<Emp> getEmpJob_3() {
+		return this.currentSession().createQuery("select new Emp(ENAME,JOB) from Emp").list();
+	}
 	public Iterator<Emp> getEmpList_iterate() {
 		return this.currentSession().createQuery("from Emp").iterate();
 	}
@@ -53,4 +61,8 @@ public class EmpDao extends BaseDao {
 		return (Emp) this.currentSession().createQuery(sql)
 				.setString("name", eName).uniqueResult();
 	}
+	
+	
+	
+	
 }

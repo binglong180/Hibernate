@@ -80,5 +80,10 @@ public class Emp {
 				+ ", MGR=" + MGR + ", HIREDATE=" + HIREDATE + ", SAL=" + SAL
 				+ ", COMM=" + COMM + ", DEPTNO=" + DEPTNO + "]";
 	}
+	public Emp(String eNAME, String jOB) {
+		super();
+		ENAME = eNAME;
+		JOB = jOB;
+	}
 	
 }

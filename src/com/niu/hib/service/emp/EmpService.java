@@ -12,7 +12,45 @@ import com.niu.hib.pojo.EmpCollection;
 
 public class EmpService {
 	EmpDao ed = null;
-
+	public List<String> getEmpJob() {
+		ed = new EmpDao();
+		List<String> pager = null;
+		Transaction tx = ed.currentSession().beginTransaction();
+		try {
+			pager = ed.getEmpJob();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println(e);
+		}
+		return pager;
+	}
+	public List<Object[]> getEmpJob_2() {
+		ed = new EmpDao();
+		List<Object[]> pager = null;
+		Transaction tx = ed.currentSession().beginTransaction();
+		try {
+			pager = ed.getEmpJob_2();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println(e);
+		}
+		return pager;
+	}
+	public List<Emp> getEmpJob_3() {
+		ed = new EmpDao();
+		List<Emp> pager = null;
+		Transaction tx = ed.currentSession().beginTransaction();
+		try {
+			pager = ed.getEmpJob_3();
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println(e);
+		}
+		return pager;
+	}
 	public Long getCount() {
 		ed = new EmpDao();
 		Long count = new Long("0");
