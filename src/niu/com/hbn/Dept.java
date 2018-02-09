@@ -1,5 +1,8 @@
 package niu.com.hbn;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Dept entity. @author MyEclipse Persistence Tools
  */
@@ -11,11 +14,19 @@ public class Dept implements java.io.Serializable {
 	private Byte deptno;
 	private String dname;
 	private String loc;
-
+	private Set<Emp> set=new HashSet<Emp>();
 	// Constructors
-
+	
 	/** default constructor */
 	public Dept() {
+	}
+
+	public Set<Emp> getSet() {
+		return set;
+	}
+
+	public void setSet(Set<Emp> set) {
+		this.set = set;
 	}
 
 	/** minimal constructor */

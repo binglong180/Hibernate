@@ -16,5 +16,9 @@
         <property name="loc" type="java.lang.String">
             <column name="LOC" length="13" />
         </property>
+        <set name="set">
+        	<key column="`DEPTNO`"></key>
+        	<one-to-many class="niu.com.hbn.Emp"/>
+        </set>
     </class>
 </hibernate-mapping>
