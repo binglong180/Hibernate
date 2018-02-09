@@ -2,6 +2,7 @@ package com.niu.hib.service.emp;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Transaction;
 
@@ -11,6 +12,32 @@ import com.niu.hib.pojo.EmpCollection;
 
 public class EmpService {
 	EmpDao ed = null;
+
+	public List<Emp> getListByCon(Map<String, Object> emp) {
+		List<Emp> empList = null;
+		ed = new EmpDao();
+		Transaction tx = ed.currentSession().beginTransaction();
+		try {
+			empList = ed.getEmpList();
+			StringBuffer sql = new StringBuffer("from Emp where 1=1 ");
+			if (emp.get("salname") != null)
+				sql.append("and SAL>:salname ");
+			if (emp.get("job") != null)
+				sql.append("and JOB=:job ");
+			if (emp.get("from") != null)
+				sql.append("and HIREDATE>:from ");
+			if (emp.get("to") != null)
+				sql.append("and HIREDATE<:to ");
+			empList = ed.getListByCon(sql.toString(), emp);
+			tx.commit();
+		} catch (Exception e) {
+			tx.rollback();
+			System.out.println(e);
+		}
+		return empList;
+
+	}
+
 	public List<Emp> getListByCon(EmpCollection emp) {
 		List<Emp> empList = null;
 		ed = new EmpDao();
@@ -35,6 +62,7 @@ public class EmpService {
 		return empList;
 
 	}
+
 	public List<Emp> getListByCon(Emp emp) {
 		List<Emp> empList = null;
 		ed = new EmpDao();

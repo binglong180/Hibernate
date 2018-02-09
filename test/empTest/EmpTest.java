@@ -1,6 +1,8 @@
 package empTest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 
@@ -76,6 +78,22 @@ public class EmpTest {
 			emp.setFrom(StringUtil.StrToDate("1981-02-01", "yyyy-MM-dd"));
 			emp.setTo(StringUtil.StrToDate("1981-09-01", "yyyy-MM-dd"));
 
+			List<Emp> listByCon = es.getListByCon(emp);
+			System.out.println(listByCon);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void test6() {
+		EmpService es = new EmpService();
+		try {
+			Map<String, Object> emp = new HashMap<String, Object>();
+			emp.put("salname", 1000.0);
+			emp.put("job", "SALESMAN");
+			emp.put("form", StringUtil.StrToDate("1981-02-01", "yyyy-MM-dd"));
+			emp.put("to", StringUtil.StrToDate("1981-09-01", "yyyy-MM-dd"));
 			List<Emp> listByCon = es.getListByCon(emp);
 			System.out.println(listByCon);
 		} catch (Exception e) {

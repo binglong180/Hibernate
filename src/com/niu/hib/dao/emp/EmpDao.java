@@ -2,6 +2,7 @@ package com.niu.hib.dao.emp;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import com.niu.hib.dao.BaseDao;
 import com.niu.hib.pojo.Emp;
@@ -21,6 +22,9 @@ public class EmpDao extends BaseDao {
 		return this.currentSession().createQuery(sql).setProperties(emp).list();
 	}
 	public List<Emp> getListByCon(String sql,EmpCollection emp) {
+		return this.currentSession().createQuery(sql).setProperties(emp).list();
+	}
+	public List<Emp> getListByCon(String sql,Map<String,Object> emp) {
 		return this.currentSession().createQuery(sql).setProperties(emp).list();
 	}
 	public Emp getEmpbyENAME(String eName) {
